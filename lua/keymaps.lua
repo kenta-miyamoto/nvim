@@ -26,3 +26,6 @@ keymap("n", "<leader>gs", builtin.git_status, {})
 -- gitの操作（git log）
 keymap("n", "<leader>gl", builtin.git_commits, {})
 
+
+-- coc
+keymap('i', '<cr>', 'coc#pum#visible() ? coc#_select_confirm() : "<CR>"', {expr = true, noremap = true})

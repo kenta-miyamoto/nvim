@@ -53,7 +53,7 @@ return require('packer').startup(function(use)
               startify.button( "q", "󰅚  Quit NVIM" , ":qa<CR>"),
           }
           startify.section.footer.val = {
-              { type = "text", val = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" },
+              { type = "text", val = "" },
           }
           -- ignore filetypes in MRU
 
@@ -86,6 +86,10 @@ return require('packer').startup(function(use)
     run = ":TSUpdate",
   })
 
+  -- coc
+  use {'neoclide/coc.nvim', branch = 'release'}
+  use('digitaltoad/vim-pug')
+  use('posva/vim-vue')
   -- git signs
   -- https://github.com/lewis6991/gitsigns.nvim
   use("lewis6991/gitsigns.nvim")
