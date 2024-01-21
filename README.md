@@ -15,7 +15,10 @@ brew install neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
-
+3. Setup copilot
+```
+:Copilot setup
+```
 
 ### commands
 ```
