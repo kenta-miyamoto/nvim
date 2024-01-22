@@ -1,67 +1,72 @@
-## nvim config
+# nvim
 
-### enviroment
+## enviroment
 - node versions : 18.12.1
 
-### Installation
-[参考](https://namileriblog.com/mac/neovim/)
+## Installation
+- [参考](https://namileriblog.com/mac/neovim/)
 
-1. Install neovim with homebrew
-```bash
-brew install neovim
-```
-2. Install Package Manager
-```bash
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-3. Install im-select
+1. **Install neovim with homebrew**
 
-```bash
-brew tap daipeihust/tap
-brew install im-select
-```
+    ```bash
+    brew install neovim
+    ```
 
-```
-which im-select
-```
+2. **Install Package Manager**
 
-以下のように出力されればインストールは完了です。
-```
-/opt/homebrew/bin/im-select
+    ```bash
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    ```
 
-```
+3. **Install im-select**
 
-以下を実行して、init.luaに記載します。
-```
-im-select
+    ```bash
+    brew tap daipeihust/tap
+    brew install im-select
+    ```
 
-```
+    ```
+    which im-select
+    ```
 
-`lua/plugins.lua`
-```lua
-use 'keaising/im-select.nvim'
-```
+    以下のように出力されればインストールは完了です。
+    ```
+    /opt/homebrew/bin/im-select
+    ```
 
-```commands
-:PackerInstall
-```
+    以下を実行して、init.luaに記載します。
+    ```
+    im-select
 
-`init.lua`
-```bash
-require('im_select').setup {
-    default_im_select = "${im-selectの実行結果}"
-}
-```
+    ```
+
+    `lua/plugins.lua`
+    ```lua
+    use 'keaising/im-select.nvim'
+    ```
+
+    ```commands
+    :PackerInstall
+    ```
+
+    `init.lua`
+    ```bash
+    require('im_select').setup {
+        default_im_select = "${im-selectの実行結果}"
+    }
+    ```
 
 
-4. Setup copilot
-```
-:Copilot setup
-```
+4. **Setup copilot**
 
-### commands
-```
-set ft=pug
-```
+    ```
+    :Copilot setup
+    ```
+
+5. **Setup pug highlight**
+
+    ```
+    set ft=pug
+    ```
 
