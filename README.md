@@ -15,7 +15,7 @@ brew install neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
-. Install im-select
+3. Install im-select
 
 ```bash
 brew tap daipeihust/tap
