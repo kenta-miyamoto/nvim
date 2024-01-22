@@ -15,7 +15,47 @@ brew install neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
-3. Setup copilot
+. Install im-select
+
+```bash
+brew tap daipeihust/tap
+brew install im-select
+```
+
+```
+which im-select
+```
+
+以下のように出力されればインストールは完了です。
+```
+/opt/homebrew/bin/im-select
+
+```
+
+以下を実行して、init.luaに記載します。
+```
+im-select
+
+```
+
+`lua/plugins.lua`
+```lua
+use 'keaising/im-select.nvim'
+```
+
+```commands
+:PackerInstall
+```
+
+`init.lua`
+```bash
+require('im_select').setup {
+    default_im_select = "${im-selectの実行結果}"
+}
+```
+
+
+4. Setup copilot
 ```
 :Copilot setup
 ```

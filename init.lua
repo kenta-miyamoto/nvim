@@ -14,6 +14,10 @@ require("nvim-treesitter.configs").setup({
 })
 require("neo-tree").setup()
 
+require('im_select').setup {
+    default_im_select = "com.google.inputmethod.Japanese.Roman"
+}
+
 require("ibl").setup()
 
 require('gitsigns').setup {

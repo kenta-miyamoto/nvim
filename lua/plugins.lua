@@ -10,6 +10,9 @@ return require('packer').startup(function(use)
   -- color scheme
   use 'folke/tokyonight.nvim' 
 
+  -- im-select
+  use 'keaising/im-select.nvim'
+
   -- dashboard
   use {
       "goolord/alpha-nvim",
