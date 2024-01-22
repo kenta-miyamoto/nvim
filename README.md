@@ -38,7 +38,6 @@
     以下を実行して、init.luaに記載します。
     ```
     im-select
-
     ```
 
     `lua/plugins.lua`
