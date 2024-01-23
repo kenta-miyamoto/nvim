@@ -443,6 +443,8 @@ return require('packer').startup(function(use)
     end,
   })
 
+  -- git
+  use('tpope/vim-fugitive')
 
 end)
 
