@@ -17,7 +17,7 @@ keymap("n", "<C-e>", ":Neotree toggle<Return>", opts)
 -- fazzy finder
 -- key map samples (https://namileriblog.com/mac/neovim_telescope/)
 local builtin = require("telescope.builtin")
-keymap("n", "<leader>ff", builtin.find_files, {})
+keymap("n", "<leader>ff", builtin.git_files, {})
 keymap("n", "<leader>fg", builtin.live_grep, {})
 -- lsp_definitions
 -- keymap("n", "gd", builtin.lsp_definitions, {})
@@ -27,16 +27,16 @@ keymap("n", "<leader>gs", builtin.git_status, {})
 keymap("n", "<leader>gl", builtin.git_commits, {})
 
 -- coc
-keymap('i', '<cr>', 'coc#pum#visible() ? coc#_select_confirm() : "<CR>"', {expr = true, noremap = true})
+-- keymap('i', '<cr>', 'coc#pum#visible() ? coc#_select_confirm() : "<CR>"', {expr = true, noremap = true})
 
 -- vim keymaps
 -- nomal mode
 keymap('n', "<C-a>", "gg<S-v>G")
 -- insert mode
-keymap('i', '"', '""<Left>', opts)
-keymap('i', "'", "''<Left>", opts)
-keymap('i', "{", "{}<Left>", opts)
-keymap('i', "[", "[]<Left>", opts)
-keymap('i', "(", "()<Left>", opts)
+-- keymap('i', '"', '""<Left>', opts)
+-- keymap('i', "'", "''<Left>", opts)
+-- keymap('i', "{", "{}<Left>", opts)
+-- keymap('i', "[", "[]<Left>", opts)
+-- keymap('i', "(", "()<Left>", opts)
 keymap('i', 'jj', '<ESC>', opts)
 
