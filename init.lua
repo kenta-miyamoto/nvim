@@ -5,7 +5,17 @@ require("lualine").setup()
 
 require("scope").setup({})
 
-require("mini.indentscope").setup({symbol = "▏", delay = 0})
+-- require("mini.indentscope").setup({symbol = "▏", delay = 0})
+require("ibl").setup({
+  debounce = 100,
+  indent = { char = "|" },
+  whitespace = {
+    highlight = { "Whitespace", "Folded" },
+    remove_blankline_trail = true
+  },
+  scope = { exclude = { language = { "lua" } } },
+})
+
 require("nvim-treesitter.configs").setup({
   auto_install = true,
   highlight = {
@@ -14,11 +24,10 @@ require("nvim-treesitter.configs").setup({
 })
 require("neo-tree").setup()
 
+-- im-select
 require('im_select').setup {
-    default_im_select = "com.google.inputmethod.Japanese.Roman"
+    default_im_select = "com.apple.keylayout.ABC"
 }
-
-require("ibl").setup()
 
 require('gitsigns').setup {
   signs = {
@@ -31,18 +40,18 @@ require('gitsigns').setup {
   },
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+  linehl     = true, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir = {
     follow_files = true
   },
   auto_attach = true,
   attach_to_untracked = true,
-  current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
   current_line_blame_opts = {
     virt_text = true,
     virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-    delay = 1000,
+    delay = 100,
     ignore_whitespace = false,
     virt_text_priority = 100,
   },
@@ -65,40 +74,40 @@ require('gitsigns').setup {
 }
 
 require("telescope").setup({
-    defaults = {
-        file_ignore_patterns = {
-            -- 検索から除外するものを指定
-            "^.git/",
-            "^.cache/",
-            "^Library/",
-            "Parallels",
-            "^Movies",
-            "^Music",
-        },
-        vimgrep_arguments = {
-            -- ripggrepコマンドのオプション
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "-uu",
-        },
+  defaults = {
+    file_ignore_patterns = {
+        -- 検索から除外するものを指定
+        "^.git/",
+        "^.cache/",
+        "^Library/",
+        "Parallels",
+        "^Movies",
+        "^Music",
     },
-    extensions = {
-        -- ソート性能を大幅に向上させるfzfを使う
-        fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = "smart_case",
-        },
+    vimgrep_arguments = {
+        -- ripggrepコマンドのオプション
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "-uu",
     },
+  },
+  extensions = {
+    -- ソート性能を大幅に向上させるfzfを使う
+    fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
+    },
+  },
 })
 require("telescope").load_extension("fzf")
 
 
-vim.cmd[[colorscheme tokyonight-night]]
-
+-- vim.cmd[[colorscheme tokyonight-night]]
+vim.cmd[[colorscheme kanagawa]]

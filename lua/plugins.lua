@@ -9,64 +9,65 @@ return require('packer').startup(function(use)
 
   -- color scheme
   use 'folke/tokyonight.nvim' 
+  use 'rebelot/kanagawa.nvim'
 
   -- im-select
   use 'keaising/im-select.nvim'
 
   -- dashboard
   use {
-      "goolord/alpha-nvim",
-      requires = { 'nvim-tree/nvim-web-devicons' },
-      config = function ()
-          local alpha = require'alpha'
-          local startify = require'alpha.themes.startify'
-          -- 現在のローカル時刻を取得して出力する
-          local current_time = os.date("%Y-%m-%d %H:%M:%S")
+    "goolord/alpha-nvim",
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = function ()
+      local alpha = require'alpha'
+      local startify = require'alpha.themes.startify'
+      -- 現在のローカル時刻を取得して出力する
+      local current_time = os.date("%Y-%m-%d %H:%M:%S")
 
-          startify.section.header.val = {
-              [[  　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 ,. -― ､                                                  ]],
-              [[　　　　　　　　　　　　　　　　　　　___,､_,,.. -:::::‐^:::ｰ:::::::- ..／ 三 三 ヽ                                           ]],
-              [[　　　　　　　　　　　　　　_,, -::::''´:::::::::::::::::^::::::::::::::^:::::::::::::::::｀ヽ､三三.|                         ]],
-              [[　　　　　　　　　　　　 ／:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: >::::::::::ヽ_三｣ 　 ／.三ヽ      ]],
-              [[　　　　　　　,ｨ===＝ﾆﾆ):::::::::::::::::::::::::: >::::::::: >::::::::::::: >:::::::::::::: >::｀''::::::-.< 三 三 |         ]],
-              [[　　　　　 ／　　　 ノ::::::::::::::::::::::::o:::::::::::::::.>::::::: >::::::::::::::::::: >::::::: >::::::: >::::l 三 三 | ]],
-              [[　　　　／　　　　 (ニﾆヽ､::::::::::::::::::::ヽ:::: >:::::::::::::::::::::::: >::::::::::::: >:::::::::::::::ノ.三 三/       ]],
-              [[　　　f非ﾐi　　　　 ヾ' ' 'ヽヽ::::::::::::::::::::ヽ､:__:::::::::: >:::::::::::::::: >:::::::::::f.彡「｀ヾ 三 ／            ]],
-              [[　　　|从ﾒl　　　　ノ, , , , ,! l:::::::::::::::::::::::l:::::::ヽ三ヽ::::::: >:::::::::::: >:::/.三 |　　｀ｰ''               ]],
-              [[　　 ﾉ|ﾒ从ﾄ､　　（二ニニ､ﾉ::::::::::::::::::::ﾉ::::::::::l 三 |::::::::::::::: >:::::::::ﾉ 三 /                               ]],
-              [[　　/人|ﾒ ! .!　 　l::::::::::::::::::::::::::::::::::::/ヽ､::::ノ.三./::::::: >::: >::::::／ｰ-‐´                             ]],
-              [[　　/　 ﾄ ﾉ　!　　 ゝ.::::::::::::::::::::::::::;::':::::::::::｀ヾミ／:::::: >::::::::::,,ゞ                                 ]],
-              [[　　　　　　　　　　　 ￣￣｀''' ー'‐‐--‐v‐-二v--vｰゝ‐''´                                                                     ]],
+      startify.section.header.val = {
+        [[  　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 ,. -― ､                                                  ]],
+        [[　　　　　　　　　　　　　　　　　　　___,､_,,.. -:::::‐^:::ｰ:::::::- ..／ 三 三 ヽ                                           ]],
+        [[　　　　　　　　　　　　　　_,, -::::''´:::::::::::::::::^::::::::::::::^:::::::::::::::::｀ヽ､三三.|                         ]],
+        [[　　　　　　　　　　　　 ／:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: >::::::::::ヽ_三｣ 　 ／.三ヽ      ]],
+        [[　　　　　　　,ｨ===＝ﾆﾆ):::::::::::::::::::::::::: >::::::::: >::::::::::::: >:::::::::::::: >::｀''::::::-.< 三 三 |         ]],
+        [[　　　　　 ／　　　 ノ::::::::::::::::::::::::o:::::::::::::::.>::::::: >::::::::::::::::::: >::::::: >::::::: >::::l 三 三 | ]],
+        [[　　　　／　　　　 (ニﾆヽ､::::::::::::::::::::ヽ:::: >:::::::::::::::::::::::: >::::::::::::: >:::::::::::::::ノ.三 三/       ]],
+        [[　　　f非ﾐi　　　　 ヾ' ' 'ヽヽ::::::::::::::::::::ヽ､:__:::::::::: >:::::::::::::::: >:::::::::::f.彡「｀ヾ 三 ／            ]],
+        [[　　　|从ﾒl　　　　ノ, , , , ,! l:::::::::::::::::::::::l:::::::ヽ三ヽ::::::: >:::::::::::: >:::/.三 |　　｀ｰ''               ]],
+        [[　　 ﾉ|ﾒ从ﾄ､　　（二ニニ､ﾉ::::::::::::::::::::ﾉ::::::::::l 三 |::::::::::::::: >:::::::::ﾉ 三 /                               ]],
+        [[　　/人|ﾒ ! .!　 　l::::::::::::::::::::::::::::::::::::/ヽ､::::ノ.三./::::::: >::: >::::::／ｰ-‐´                             ]],
+        [[　　/　 ﾄ ﾉ　!　　 ゝ.::::::::::::::::::::::::::;::':::::::::::｀ヾミ／:::::: >::::::::::,,ゞ                                 ]],
+        [[　　　　　　　　　　　 ￣￣｀''' ー'‐‐--‐v‐-二v--vｰゝ‐''´                                                                     ]],
 
-          }
-          table.insert(startify.section.header.val, current_time)
-          startify.section.top_buttons.val = {
-              startify.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
-          }
-          -- disable MRU
-          startify.section.mru.val = { { type = "padding", val = 0 } }
-          -- disable MRU cwd
-          startify.section.mru_cwd.val = { { type = "padding", val = 0 } }
-          -- disable nvim_web_devicons
-          startify.nvim_web_devicons.enabled = false
-          -- startify.nvim_web_devicons.highlight = false
-          -- startify.nvim_web_devicons.highlight = 'Keyword'
-          --
-          startify.section.bottom_buttons.val = {
-              startify.button( "q", "󰅚  Quit NVIM" , ":qa<CR>"),
-          }
-          startify.section.footer.val = {
-              { type = "text", val = "" },
-          }
-          -- ignore filetypes in MRU
+      }
+      table.insert(startify.section.header.val, current_time)
+      startify.section.top_buttons.val = {
+        startify.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
+      }
+      -- disable MRU
+      startify.section.mru.val = { { type = "padding", val = 0 } }
+      -- disable MRU cwd
+      startify.section.mru_cwd.val = { { type = "padding", val = 0 } }
+      -- disable nvim_web_devicons
+      startify.nvim_web_devicons.enabled = false
+      -- startify.nvim_web_devicons.highlight = false
+      -- startify.nvim_web_devicons.highlight = 'Keyword'
+      --
+      startify.section.bottom_buttons.val = {
+        startify.button( "q", "󰅚  Quit NVIM" , ":qa<CR>"),
+      }
+      startify.section.footer.val = {
+        { type = "text", val = "" },
+      }
+      -- ignore filetypes in MRU
 
-          startify.mru_opts.ignore = function(path, ext)
-              return
-                      (string.find(path, "COMMIT_EDITMSG"))
-                  or  (vim.tbl_contains(default_mru_ignore, ext))
-          end
-          alpha.setup(startify.config)
+      startify.mru_opts.ignore = function(path, ext)
+        return
+                (string.find(path, "COMMIT_EDITMSG"))
+            or  (vim.tbl_contains(default_mru_ignore, ext))
       end
+      alpha.setup(startify.config)
+    end
   }
 
   -- status line style
@@ -79,8 +80,10 @@ return require('packer').startup(function(use)
   -- tab line style
   use("tiagovla/scope.nvim")
 
-  -- indent scope
-  use("echasnovski/mini.indentscope")
+  -- indent
+  use "echasnovski/mini.indentscope"
+  use "lukas-reineke/indent-blankline.nvim"
+
 
   -- TODO: cloud not install
   -- syntax hilighting
@@ -90,7 +93,7 @@ return require('packer').startup(function(use)
   })
 
   -- coc
-  use {'neoclide/coc.nvim', branch = 'release'}
+--  use {'neoclide/coc.nvim', branch = 'release'}
   use('digitaltoad/vim-pug')
   use('posva/vim-vue')
   -- git signs
@@ -104,9 +107,6 @@ return require('packer').startup(function(use)
     requires = { { "nvim-lua/plenary.nvim" } },
   })
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
-  -- indent rainbow
-  use "lukas-reineke/indent-blankline.nvim"
 
   -- file tree
   -- https://github.com/nvim-neo-tree/neo-tree.nvim
@@ -122,18 +122,18 @@ return require('packer').startup(function(use)
           's1n7ax/nvim-window-picker',
           version = '2.*',
           config = function()
-              require 'window-picker'.setup({
-                  filter_rules = {
-                      include_current_win = false,
-                      autoselect_one = true,
-                      -- filter using buffer options
-                      bo = {
-                          -- if the file type is one of following, the window will be ignored
-                          filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-                          -- if the buffer type is one of following, the window will be ignored
-                          buftype = { 'terminal', "quickfix" },
-                      },
-              },
+            require 'window-picker'.setup({
+                filter_rules = {
+                    include_current_win = false,
+                    autoselect_one = true,
+                    -- filter using buffer options
+                    bo = {
+                        -- if the file type is one of following, the window will be ignored
+                        filetype = { 'neo-tree', "neo-tree-popup", "notify" },
+                        -- if the buffer type is one of following, the window will be ignored
+                        buftype = { 'terminal', "quickfix" },
+                    },
+            },
           })
           end,
         },
@@ -445,6 +445,5 @@ return require('packer').startup(function(use)
 
   -- git
   use('tpope/vim-fugitive')
-
 end)
 

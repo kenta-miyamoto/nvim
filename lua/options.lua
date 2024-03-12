@@ -29,7 +29,7 @@ vim.opt.smartindent = true -- インデントをスマートに調整する
 
 -- 表示
 vim.opt.number = true -- 行番号を表示
-vim.opt.relativenumber = true -- 相対行番号を表示
+vim.opt.relativenumber = false -- 相対行番号を表示
 vim.opt.wrap = true -- テキストの自動折り返しを無効に
 -- vim.opt.showtabline = 2 -- タブラインを表示
                         -- （1:常に表示、2:タブが開かれたときに表示）
