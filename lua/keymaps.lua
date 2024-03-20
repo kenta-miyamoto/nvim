@@ -15,28 +15,28 @@ keymap("n", "<C-b>", ":Neotree buffers<Return>", opts)
 keymap("n", "<C-e>", ":Neotree toggle<Return>", opts)
 
 -- fazzy finder
--- key map samples (https://namileriblog.com/mac/neovim_telescope/)
 local builtin = require("telescope.builtin")
 keymap("n", "<leader>ff", builtin.git_files, {})
 keymap("n", "<leader>fg", builtin.live_grep, {})
--- lsp_definitions
--- keymap("n", "gd", builtin.lsp_definitions, {})
--- gitの操作（git status）
-keymap("n", "<leader>gs", builtin.git_status, {})
--- gitの操作（git log）
-keymap("n", "<leader>gl", builtin.git_commits, {})
 
--- coc
--- keymap('i', '<cr>', 'coc#pum#visible() ? coc#_select_confirm() : "<CR>"', {expr = true, noremap = true})
+-- gitの操作
+keymap("n", "<leader>gs", builtin.git_status, {})
+keymap("n", "<leader>gl", builtin.git_commits, {})
 
 -- vim keymaps
 -- nomal mode
 keymap('n', "<C-a>", "gg<S-v>G")
+keymap('n', "<C-h>", "<C-w>h")
+keymap('n', "<C-j>", "<C-w>j")
+keymap('n', "<C-k>", "<C-w>k")
+keymap('n', "<C-l>", "<C-w>l")
+
 -- insert mode
+keymap('i', 'jj', '<ESC>', opts)
+keymap('i', 'っｊ', '<ESC>', opts)
 -- keymap('i', '"', '""<Left>', opts)
 -- keymap('i', "'", "''<Left>", opts)
 -- keymap('i', "{", "{}<Left>", opts)
 -- keymap('i', "[", "[]<Left>", opts)
 -- keymap('i', "(", "()<Left>", opts)
-keymap('i', 'jj', '<ESC>', opts)
 

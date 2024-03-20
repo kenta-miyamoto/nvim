@@ -63,7 +63,14 @@
     :Copilot setup
     ```
 
-5. **Setup pug highlight**
+5. **Install RipGrep**
+
+    ```bash
+    brew install ripgrep
+    ```
+
+
+6. **Setup pug highlight**
 
     ```
     set ft=pug

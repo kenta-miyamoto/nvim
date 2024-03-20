@@ -84,8 +84,6 @@ return require('packer').startup(function(use)
   use "echasnovski/mini.indentscope"
   use "lukas-reineke/indent-blankline.nvim"
 
-
-  -- TODO: cloud not install
   -- syntax hilighting
   use({
     "nvim-treesitter/nvim-treesitter",
@@ -93,7 +91,8 @@ return require('packer').startup(function(use)
   })
 
   -- coc
---  use {'neoclide/coc.nvim', branch = 'release'}
+  -- use {'neoclide/coc.nvim', branch = 'release'}
+
   use('digitaltoad/vim-pug')
   use('posva/vim-vue')
   -- git signs
@@ -101,12 +100,12 @@ return require('packer').startup(function(use)
   use("lewis6991/gitsigns.nvim")
 
   -- fazzy finder
+  -- https://github.com/nvim-telescope/telescope.nvim
   use({
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.2",
+    tag = "0.1.6",
     requires = { { "nvim-lua/plenary.nvim" } },
   })
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- file tree
   -- https://github.com/nvim-neo-tree/neo-tree.nvim
@@ -123,16 +122,16 @@ return require('packer').startup(function(use)
           version = '2.*',
           config = function()
             require 'window-picker'.setup({
-                filter_rules = {
-                    include_current_win = false,
-                    autoselect_one = true,
-                    -- filter using buffer options
-                    bo = {
-                        -- if the file type is one of following, the window will be ignored
-                        filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-                        -- if the buffer type is one of following, the window will be ignored
-                        buftype = { 'terminal', "quickfix" },
-                    },
+              filter_rules = {
+                include_current_win = false,
+                autoselect_one = true,
+                -- filter using buffer options
+                bo = {
+                    -- if the file type is one of following, the window will be ignored
+                    filetype = { 'neo-tree', "neo-tree-popup", "notify" },
+                    -- if the buffer type is one of following, the window will be ignored
+                    buftype = { 'terminal', "quickfix" },
+                },
             },
           })
           end,
@@ -209,7 +208,7 @@ return require('packer').startup(function(use)
                 deleted   = "✖",-- this can only be used in the git_status source
                 renamed   = "󰁕",-- this can only be used in the git_status source
                 -- Status type
-                untracked = "",
+                untracked = "+",
                 ignored   = "",
                 unstaged  = "󰄱",
                 staged    = "",

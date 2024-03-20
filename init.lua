@@ -75,14 +75,13 @@ require('gitsigns').setup {
 
 require("telescope").setup({
   defaults = {
-    file_ignore_patterns = {
-        -- 検索から除外するものを指定
-        "^.git/",
-        "^.cache/",
-        "^Library/",
-        "Parallels",
-        "^Movies",
-        "^Music",
+    -- TODO: test
+    -- preview config
+    layout_strategy = 'bottom_pane',
+    layout_config = {
+      height = 0.2,
+      width = 0.4,
+      prompt_position = 'bottom',
     },
     vimgrep_arguments = {
         -- ripggrepコマンドのオプション
@@ -93,21 +92,11 @@ require("telescope").setup({
         "--line-number",
         "--column",
         "--smart-case",
-        "-uu",
-    },
-  },
-  extensions = {
-    -- ソート性能を大幅に向上させるfzfを使う
-    fzf = {
-        fuzzy = true,
-        override_generic_sorter = true,
-        override_file_sorter = true,
-        case_mode = "smart_case",
-    },
-  },
+    }
+  }
 })
-require("telescope").load_extension("fzf")
 
 
 -- vim.cmd[[colorscheme tokyonight-night]]
 vim.cmd[[colorscheme kanagawa]]
+
