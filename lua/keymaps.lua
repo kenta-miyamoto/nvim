@@ -26,10 +26,12 @@ keymap("n", "<leader>gl", builtin.git_commits, {})
 -- vim keymaps
 -- nomal mode
 keymap('n', "<C-a>", "gg<S-v>G")
-keymap('n', "<C-h>", "<C-w>h")
-keymap('n', "<C-j>", "<C-w>j")
-keymap('n', "<C-k>", "<C-w>k")
-keymap('n', "<C-l>", "<C-w>l")
+keymap('n', "gh", "<C-w>h")
+keymap('n', "gj", "<C-w>j")
+keymap('n', "gk", "<C-w>k")
+keymap('n', "gl", "<C-w>l")
+keymap("n", "x", '"_x', opts)  -- delete without yank
+keymap("n", ";", ":", opts)
 
 -- insert mode
 keymap('i', 'jj', '<ESC>', opts)
