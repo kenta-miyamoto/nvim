@@ -90,9 +90,6 @@ return require('packer').startup(function(use)
     run = ":TSUpdate",
   })
 
-  -- coc
-  -- use {'neoclide/coc.nvim', branch = 'release'}
-
   use('digitaltoad/vim-pug')
   use('posva/vim-vue')
   -- git signs
