@@ -69,6 +69,12 @@
     brew install ripgrep
     ```
 
+5. **Install LSP**
+
+  ```commands
+  Mason
+  ```
+
 
 6. **Setup pug highlight**
 
