@@ -8,8 +8,11 @@ return require("packer").startup(function(use)
 	-- use ''
 
 	-- color scheme
+	-- refs https://vimcolorschemes.com/top/
 	use("folke/tokyonight.nvim")
 	use("rebelot/kanagawa.nvim")
+	use("tomasr/molokai")
+	use("NLKNguyen/papercolor-theme")
 
 	-- im-select
 	use("keaising/im-select.nvim")
@@ -438,4 +441,12 @@ return require("packer").startup(function(use)
 
 	-- git
 	use("tpope/vim-fugitive")
+
+  -- https://github.com/numToStr/Comment.nvim
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
 end)
