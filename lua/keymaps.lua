@@ -18,8 +18,6 @@ keymap("n", "<C-e>", ":Neotree toggle<Return>", opts)
 local builtin = require("telescope.builtin")
 keymap("n", "<leader>ff", builtin.git_files, {})
 keymap("n", "<leader>fg", builtin.live_grep, {})
-
--- gitの操作
 keymap("n", "<leader>gs", builtin.git_status, {})
 keymap("n", "<leader>gl", builtin.git_commits, {})
 
@@ -32,6 +30,11 @@ keymap('n', "gk", "<C-w>k")
 keymap('n', "gl", "<C-w>l")
 keymap("n", "x", '"_x', opts)  -- delete without yank
 keymap("n", ";", ":", opts)
+
+keymap('n', '<C-,>', '<C-w>>') -- ウィンドウの横幅を少し広げる
+keymap('n', '<C-.>', '<C-w>+') -- ウィンドウの縦幅を少し広げる
+keymap('n', '<C-<>', '<C-w><') -- ウィンドウの横幅を少し狭める
+keymap('n', '<C->>', '<C-w>-') -- ウィンドウの縦幅を少し狭める
 
 -- insert mode
 keymap('i', 'jj', '<ESC>', opts)
