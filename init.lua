@@ -2,15 +2,12 @@ require("options")
 require("plugins")
 require("keymaps")
 require("lualine").setup()
-
 require("scope").setup({})
 
 -- require("mini.indentscope").setup({symbol = "▏", delay = 0})
 require("ibl").setup({
 	debounce = 100,
-	indent = { char = "|" },
-	whitespace = {
-		highlight = { "Whitespace", "Folded" },
+	indent = { char = "|" }, whitespace = { highlight = { "Whitespace", "Folded" },
 		remove_blankline_trail = true,
 	},
 	scope = { exclude = { language = { "lua" } } },
@@ -100,21 +97,41 @@ require("telescope").setup({
 require("mason").setup()
 
 -- https://github.com/mhartington/formatter.nvim
+local util = require "formatter.util"
+
 require("formatter").setup({
 	logging = true,
 	log_level = vim.log.levels.WARN,
 	filetype = {
-		javascript = { require("formatter.filetypes.javascript").biome },
+		javascript = { 
+      function()
+        return {
+          exe = "prettier",
+          args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--single-quote"},
+          stdin = true,
+        }
+      end,
+    },
 		json = { require("formatter.filetypes.json").jq },
 		ruby = { require("formatter.filetypes.ruby").rubocop },
 		lua = { require("formatter.filetypes.lua").stylua },
+		sql = {
+			function()
+				return {
+					exe = "sql-formatter",
+					args = {},
+					stdin = true,
+				}
+			end,
+		},
 	},
 })
 
+-- https://github.com/mfussenegger/nvim-lint
 require("lint").linters_by_ft = {
 	markdown = { "vale" },
 	javascript = { "biomejs" },
-	ruby = { "rubocop" },
+	ruby = { "rubocop" }
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -123,5 +140,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	end,
 })
 
+require('Comment').setup()
 -- vim.cmd[[colorscheme tokyonight-night]]
 vim.cmd([[colorscheme kanagawa]])
