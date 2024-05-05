@@ -32,7 +32,7 @@ vim.opt.number = true -- 行番号を表示
 vim.opt.relativenumber = false -- 相対行番号を表示
 vim.opt.wrap = true -- テキストの自動折り返しを無効に
 -- vim.opt.showtabline = 2 -- タブラインを表示
-                        -- （1:常に表示、2:タブが開かれたときに表示）
+-- （1:常に表示、2:タブが開かれたときに表示）
 vim.opt.visualbell = true -- ビープ音を表示する代わりに画面をフラッシュ
 vim.opt.showmatch = true -- 対応する括弧をハイライト表示
 
@@ -47,3 +47,4 @@ vim.cmd("highlight LineNr guifg=#8a70ac")
 -- カーソルの形状
 vim.o.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 
+vim.cmd("language en_US")

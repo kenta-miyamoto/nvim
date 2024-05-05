@@ -1,16 +1,42 @@
 require("options")
 require("plugins")
 require("keymaps")
-require("lualine").setup()
-require("scope").setup({})
 
--- require("mini.indentscope").setup({symbol = "▏", delay = 0})
+-- https://github.com/nvim-lualine/lualine.nvim
+require("lualine").setup({
+	options = {
+		theme = "gruvbox",
+		section_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
+	},
+	sections = {
+		lualine_a = { "mode" },
+		-- lualine_b = {'branch', 'diff', 'diagnostics'},
+		lualine_b = {
+			{ "branch" },
+			{
+				"diff",
+				symbols = { added = "added  ", modified = "modified  ", removed = "removed  " },
+			},
+			{
+				"diagnostics",
+				symbols = { error = " ", warn = " ", info = " ", hint = " " },
+			},
+		},
+		lualine_c = { "filename" },
+		lualine_x = { "encoding", "fileformat", "filetype" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
+	},
+})
+-- require("scope").setup({})
+
+require("mini.indentscope").setup({ symbol = "▏", delay = 0 })
 require("ibl").setup({
 	debounce = 100,
-	indent = { char = "|" }, whitespace = { highlight = { "Whitespace", "Folded" },
-		remove_blankline_trail = true,
-	},
-	scope = { exclude = { language = { "lua" } } },
+	indent = { char = "|" },
+	whitespace = { highlight = { "Whitespace", "Folded" }, remove_blankline_trail = true },
+	scope = { exclude = { language = { "" } } },
 })
 
 require("nvim-treesitter.configs").setup({
@@ -72,7 +98,6 @@ require("gitsigns").setup({
 
 require("telescope").setup({
 	defaults = {
-		-- TODO: test
 		-- preview config
 		layout_strategy = "bottom_pane",
 		layout_config = {
@@ -97,24 +122,25 @@ require("telescope").setup({
 require("mason").setup()
 
 -- https://github.com/mhartington/formatter.nvim
-local util = require "formatter.util"
+local util = require("formatter.util")
 
 require("formatter").setup({
 	logging = true,
 	log_level = vim.log.levels.WARN,
 	filetype = {
-		javascript = { 
-      function()
-        return {
-          exe = "prettier",
-          args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--single-quote"},
-          stdin = true,
-        }
-      end,
-    },
+		javascript = {
+			function()
+				return {
+					exe = "prettier",
+					args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--single-quote" },
+					stdin = true,
+				}
+			end,
+		},
 		json = { require("formatter.filetypes.json").jq },
 		ruby = { require("formatter.filetypes.ruby").rubocop },
 		lua = { require("formatter.filetypes.lua").stylua },
+		go = { require("formatter.filetypes.go").golines },
 		sql = {
 			function()
 				return {
@@ -131,7 +157,8 @@ require("formatter").setup({
 require("lint").linters_by_ft = {
 	markdown = { "vale" },
 	javascript = { "biomejs" },
-	ruby = { "rubocop" }
+	ruby = { "rubocop" },
+	go = { "golangcilint" },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -140,6 +167,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	end,
 })
 
-require('Comment').setup()
--- vim.cmd[[colorscheme tokyonight-night]]
-vim.cmd([[colorscheme kanagawa]])
+require("Comment").setup()
+vim.cmd([[colorscheme tokyonight-night]])
+-- vim.cmd([[colorscheme kanagawa]])
