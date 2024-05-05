@@ -4,71 +4,18 @@ return require("packer").startup(function(use)
 	-- https://github.com/wbthomason/packer.nvim#quickstart
 	use("wbthomason/packer.nvim")
 
-	-- add plugins like
-	-- use ''
-
 	-- color scheme
 	-- refs https://vimcolorschemes.com/top/
 	use("folke/tokyonight.nvim")
 	use("rebelot/kanagawa.nvim")
 	use("tomasr/molokai")
+	use("scottmckendry/cyberdream.nvim")
 	use("NLKNguyen/papercolor-theme")
 
 	-- im-select
 	use("keaising/im-select.nvim")
 
 	-- dashboard
-	use({
-		"goolord/alpha-nvim",
-		requires = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			local alpha = require("alpha")
-			local startify = require("alpha.themes.startify")
-			-- 現在のローカル時刻を取得して出力する
-			local current_time = os.date("%Y-%m-%d %H:%M:%S")
-
-			startify.section.header.val = {
-				[[  　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 ,. -― ､                                                  ]],
-				[[　　　　　　　　　　　　　　　　　　　___,､_,,.. -:::::‐^:::ｰ:::::::- ..／ 三 三 ヽ                                           ]],
-				[[　　　　　　　　　　　　　　_,, -::::''´:::::::::::::::::^::::::::::::::^:::::::::::::::::｀ヽ､三三.|                         ]],
-				[[　　　　　　　　　　　　 ／:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: >::::::::::ヽ_三｣ 　 ／.三ヽ      ]],
-				[[　　　　　　　,ｨ===＝ﾆﾆ):::::::::::::::::::::::::: >::::::::: >::::::::::::: >:::::::::::::: >::｀''::::::-.< 三 三 |         ]],
-				[[　　　　　 ／　　　 ノ::::::::::::::::::::::::o:::::::::::::::.>::::::: >::::::::::::::::::: >::::::: >::::::: >::::l 三 三 | ]],
-				[[　　　　／　　　　 (ニﾆヽ､::::::::::::::::::::ヽ:::: >:::::::::::::::::::::::: >::::::::::::: >:::::::::::::::ノ.三 三/       ]],
-				[[　　　f非ﾐi　　　　 ヾ' ' 'ヽヽ::::::::::::::::::::ヽ､:__:::::::::: >:::::::::::::::: >:::::::::::f.彡「｀ヾ 三 ／            ]],
-				[[　　　|从ﾒl　　　　ノ, , , , ,! l:::::::::::::::::::::::l:::::::ヽ三ヽ::::::: >:::::::::::: >:::/.三 |　　｀ｰ''               ]],
-				[[　　 ﾉ|ﾒ从ﾄ､　　（二ニニ､ﾉ::::::::::::::::::::ﾉ::::::::::l 三 |::::::::::::::: >:::::::::ﾉ 三 /                               ]],
-				[[　　/人|ﾒ ! .!　 　l::::::::::::::::::::::::::::::::::::/ヽ､::::ノ.三./::::::: >::: >::::::／ｰ-‐´                             ]],
-				[[　　/　 ﾄ ﾉ　!　　 ゝ.::::::::::::::::::::::::::;::':::::::::::｀ヾミ／:::::: >::::::::::,,ゞ                                 ]],
-				[[　　　　　　　　　　　 ￣￣｀''' ー'‐‐--‐v‐-二v--vｰゝ‐''´                                                                     ]],
-			}
-			table.insert(startify.section.header.val, current_time)
-			startify.section.top_buttons.val = {
-				startify.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-			}
-			-- disable MRU
-			startify.section.mru.val = { { type = "padding", val = 0 } }
-			-- disable MRU cwd
-			startify.section.mru_cwd.val = { { type = "padding", val = 0 } }
-			-- disable nvim_web_devicons
-			startify.nvim_web_devicons.enabled = false
-			-- startify.nvim_web_devicons.highlight = false
-			-- startify.nvim_web_devicons.highlight = 'Keyword'
-			--
-			startify.section.bottom_buttons.val = {
-				startify.button("q", "󰅚  Quit NVIM", ":qa<CR>"),
-			}
-			startify.section.footer.val = {
-				{ type = "text", val = "" },
-			}
-			-- ignore filetypes in MRU
-
-			startify.mru_opts.ignore = function(path, ext)
-				return (string.find(path, "COMMIT_EDITMSG")) or (vim.tbl_contains(default_mru_ignore, ext))
-			end
-			alpha.setup(startify.config)
-		end,
-	})
 
 	-- status line style
 	use({
@@ -78,7 +25,7 @@ return require("packer").startup(function(use)
 	use("nvim-tree/nvim-web-devicons")
 
 	-- tab line style
-	use("tiagovla/scope.nvim")
+	-- use("tiagovla/scope.nvim")
 
 	-- indent
 	use("echasnovski/mini.indentscope")
@@ -92,6 +39,7 @@ return require("packer").startup(function(use)
 
 	use("digitaltoad/vim-pug")
 	use("posva/vim-vue")
+
 	-- git signs
 	-- https://github.com/lewis6991/gitsigns.nvim
 	use("lewis6991/gitsigns.nvim")
@@ -417,7 +365,7 @@ return require("packer").startup(function(use)
 	use({
 		"github/copilot.vim",
 		config = function()
-			vim.g.copilot_no_tab_map = true
+			-- vim.g.copilot_no_tab_map = true
 
 			local keymap = vim.keymap.set
 			-- https://github.com/orgs/community/discussions/29817#discussioncomment-4217615
@@ -442,7 +390,7 @@ return require("packer").startup(function(use)
 	-- git
 	use("tpope/vim-fugitive")
 
-  -- https://github.com/numToStr/Comment.nvim
+	-- https://github.com/numToStr/Comment.nvim
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
