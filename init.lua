@@ -169,4 +169,5 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 
 require("Comment").setup()
 vim.cmd([[colorscheme tokyonight-night]])
+vim.cmd([[language en_US.UTF-8]])
 -- vim.cmd([[colorscheme kanagawa]])
