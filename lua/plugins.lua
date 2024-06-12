@@ -9,6 +9,7 @@ return require("packer").startup(function(use)
 	use("folke/tokyonight.nvim")
 	use("rebelot/kanagawa.nvim")
 	use("tomasr/molokai")
+  use("scottmckendry/cyberdream.nvim")
 	use("scottmckendry/cyberdream.nvim")
 	use("NLKNguyen/papercolor-theme")
 

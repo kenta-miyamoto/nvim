@@ -6,8 +6,8 @@ require("keymaps")
 require("lualine").setup({
 	options = {
 		theme = "gruvbox",
-		section_separators = { left = "", right = "" },
-		component_separators = { left = "", right = "" },
+		-- section_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
 	},
 	sections = {
 		lualine_a = { "mode" },
@@ -63,7 +63,7 @@ require("gitsigns").setup({
 	},
 	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 	numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-	linehl = true, -- Toggle with `:Gitsigns toggle_linehl`
+	linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
 	word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
 	watch_gitdir = {
 		follow_files = true,
@@ -137,6 +137,7 @@ require("formatter").setup({
 				}
 			end,
 		},
+    vue = { require("formatter.filetypes.vue").prettier },
 		json = { require("formatter.filetypes.json").jq },
 		ruby = { require("formatter.filetypes.ruby").rubocop },
 		lua = { require("formatter.filetypes.lua").stylua },
@@ -156,6 +157,7 @@ require("formatter").setup({
 -- https://github.com/mfussenegger/nvim-lint
 require("lint").linters_by_ft = {
 	markdown = { "vale" },
+  vue = { "eslint_d" },
 	javascript = { "biomejs" },
 	ruby = { "rubocop" },
 	go = { "golangcilint" },
@@ -168,6 +170,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 })
 
 require("Comment").setup()
-vim.cmd([[colorscheme tokyonight-night]])
+
+vim.cmd([[colorscheme kanagawa-wave]])
 vim.cmd([[language en_US.UTF-8]])
--- vim.cmd([[colorscheme kanagawa]])
