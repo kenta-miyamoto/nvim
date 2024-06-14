@@ -171,5 +171,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 
 require("Comment").setup()
 
-vim.cmd([[colorscheme kanagawa-wave]])
+vim.cmd([[colorscheme cyberdream]])
+-- vim.cmd([[colorscheme kanagawa-wave]])
 vim.cmd([[language en_US.UTF-8]])

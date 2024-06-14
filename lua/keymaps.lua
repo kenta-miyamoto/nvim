@@ -31,6 +31,8 @@ keymap("n", "gl", "<C-w>l")
 keymap("n", "x", '"_x', opts) -- delete without yank
 keymap("n", ";", ":", opts)
 
+keymap("n", "<ESC><ESC>", ":nohlsearch<Return>", opts)
+
 keymap("n", "<C-,>", "<C-w>>") -- ウィンドウの横幅を少し広げる
 keymap("n", "<C-.>", "<C-w>+") -- ウィンドウの縦幅を少し広げる
 keymap("n", "<C-<>", "<C-w><") -- ウィンドウの横幅を少し狭める
