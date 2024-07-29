@@ -141,6 +141,7 @@ require("formatter").setup({
 		ruby = { require("formatter.filetypes.ruby").rubocop },
 		lua = { require("formatter.filetypes.lua").stylua },
 		go = { require("formatter.filetypes.go").golines },
+    rust = { require("formatter.filetypes.rust").rustfmt },
 		sql = {
 			function()
 				return {
@@ -158,7 +159,7 @@ require("lint").linters_by_ft = {
 	markdown = { "vale" },
 	javascript = { "biomejs" },
 	ruby = { "rubocop" },
-	go = { "golangcilint" },
+	go = { "golangcilint" }
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -168,6 +169,5 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 })
 
 require("Comment").setup()
-vim.cmd([[colorscheme tokyonight-night]])
+vim.cmd([[colorscheme kanagawa-wave]])
 vim.cmd([[language en_US.UTF-8]])
--- vim.cmd([[colorscheme kanagawa]])
