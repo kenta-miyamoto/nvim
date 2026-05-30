@@ -58,13 +58,7 @@ Go、Vue.js、JavaScript、TypeScript、Markdownをよく使うためのNeovim�
 
     LSP serverは `mason-lspconfig.nvim` により、可能なものは自動でインストールされます。
 
-6. GitHub Copilotを使う場合はセットアップします。
-
-    ```vim
-    :Copilot setup
-    ```
-
-7. 環境を確認します。
+6. 環境を確認します。
 
     ```vim
     :checkhealth
