@@ -1,8 +1,11 @@
 require("options")
 require("plugins")
 require("keymaps")
+require("completion")
 require("format")
+require("git")
 require("user_lint")
+require("which_key")
 
 -- https://github.com/nvim-lualine/lualine.nvim
 require("lualine").setup({

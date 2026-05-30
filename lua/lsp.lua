@@ -1,16 +1,22 @@
 local function map_lsp_keys(event)
-	local opts = { buffer = event.buf, silent = true }
 	local keymap = vim.keymap.set
+	local function opts(desc)
+		return { buffer = event.buf, silent = true, desc = desc }
+	end
 
-	keymap("n", "gd", vim.lsp.buf.definition, opts)
-	keymap("n", "gD", vim.lsp.buf.declaration, opts)
-	keymap("n", "gr", vim.lsp.buf.references, opts)
-	keymap("n", "gi", vim.lsp.buf.implementation, opts)
-	keymap("n", "K", vim.lsp.buf.hover, opts)
-	keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
-	keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-	keymap("n", "[d", vim.diagnostic.goto_prev, opts)
-	keymap("n", "]d", vim.diagnostic.goto_next, opts)
+	keymap("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
+	keymap("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
+	keymap("n", "gr", vim.lsp.buf.references, opts("Show references"))
+	keymap("n", "gi", vim.lsp.buf.implementation, opts("Go to implementation"))
+	keymap("n", "K", vim.lsp.buf.hover, opts("Show hover documentation"))
+	keymap("n", "<leader>rn", vim.lsp.buf.rename, opts("Rename symbol"))
+	keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts("Code action"))
+	keymap("n", "[d", function()
+		vim.diagnostic.jump({ count = -1, float = true })
+	end, opts("Previous diagnostic"))
+	keymap("n", "]d", function()
+		vim.diagnostic.jump({ count = 1, float = true })
+	end, opts("Next diagnostic"))
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -20,6 +26,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 local vue_language_server_path = vim.fn.stdpath("data")
 	.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local ok_blink, blink = pcall(require, "blink.cmp")
+if ok_blink then
+	capabilities = blink.get_lsp_capabilities(capabilities)
+end
+
+vim.lsp.config("*", {
+	capabilities = capabilities,
+})
 
 vim.lsp.config("vtsls", {
 	settings = {

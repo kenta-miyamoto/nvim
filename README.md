@@ -4,7 +4,7 @@ Go、Vue.js、JavaScript、TypeScript、Markdownをよく使うためのNeovim�
 
 ## 環境
 
-- Neovim: 0.11.0+
+- Neovim: 0.12.2+
 - Node.js: JavaScript / TypeScript / VueのLSPやformatterで必要
 - Go: GoのLSPやformatterで必要
 - ripgrep: Telescopeの全文検索で必要
@@ -100,7 +100,7 @@ make tools MASON_INSTALL_WAIT=180
 | Target | 内容 |
 | --- | --- |
 | `make setup` | 依存関係、Packer、plugin、Mason tool、Treesitter parserを入れて確認まで実行する |
-| `make deps` | Homebrewが使える場合にNeovim、ripgrep、im-selectを入れる |
+| `make deps` | Homebrewが使える場合にNeovimを最新化し、ripgrep、im-selectを入れる |
 | `make packer` | Packerがなければインストールする |
 | `make plugins` | `:PackerSync` を実行する |
 | `make tools` | Masonで必要なLSP / formatter / linterを入れる |
@@ -115,6 +115,9 @@ make tools MASON_INSTALL_WAIT=180
 - JavaScript / TypeScript: `vtsls`
 - Vue.js: `vue_ls` + `vtsls`
 - Markdown: Treesitter highlight、Prettier format、Vale lint
+- 補完UI: `blink.cmp`
+- キーマップ表示: `which-key.nvim`
+- Git差分ビュー: `diffview.nvim`
 
 ## 基本操作
 
@@ -150,6 +153,34 @@ make tools MASON_INSTALL_WAIT=180
 | `<leader>gl` | Git commit logを開く |
 
 `<leader>` はspaceです。
+
+### 補完
+
+| キー | 操作 |
+| --- | --- |
+| `<C-Space>` | 補完候補またはdocumentを表示する |
+| `<C-n>` / `<C-p>` | 補完候補を上下に移動する |
+| `<Tab>` / `<S-Tab>` | 補完候補を上下に移動する |
+| `<Enter>` | 選択中の補完候補を確定する |
+| `<C-e>` | 補完候補を閉じる |
+| `<C-k>` | signature helpを表示する |
+
+### キーマップヘルプ
+
+| キー | 操作 |
+| --- | --- |
+| `<leader>` | leader key配下の候補を表示する |
+| `<leader>g` | Git関連の候補を表示する |
+| `<leader>c` | code actionなどの候補を表示する |
+
+### Git差分
+
+| キー | 操作 |
+| --- | --- |
+| `<leader>gd` | 現在の作業ツリーの差分ビューを開く |
+| `<leader>gD` | `origin/HEAD...HEAD` との差分ビューを開く |
+| `<leader>gh` | 現在ファイルの履歴を開く |
+| `<leader>gq` | 差分ビューを閉じる |
 
 ### tabとwindow
 

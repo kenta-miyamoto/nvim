@@ -25,7 +25,11 @@ setup: deps packer plugins tools treesitter check
 
 deps:
 	@if command -v brew >/dev/null 2>&1; then \
-		brew list neovim >/dev/null 2>&1 || brew install neovim; \
+		if brew list neovim >/dev/null 2>&1; then \
+			brew outdated --quiet neovim | grep -qx "neovim" && brew upgrade neovim || true; \
+		else \
+			brew install neovim; \
+		fi; \
 		brew list ripgrep >/dev/null 2>&1 || brew install ripgrep; \
 		brew tap | grep -qx "daipeihust/tap" || brew tap daipeihust/tap; \
 		brew list im-select >/dev/null 2>&1 || brew install im-select; \

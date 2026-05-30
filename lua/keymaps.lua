@@ -5,29 +5,29 @@ vim.g.mapleader = " "
 -- local keymap = vim.api.nvim_set_keymap
 
 -- tab関連(https://howpon.com/21914)
-keymap("n", "<C-n>", ":tabnext<Return>", opts)
-keymap("n", "<C-p>", ":tabprevious<Return>", opts)
-keymap("n", "<C-t>", ":tabnew<Return>", opts)
-keymap("n", "<C-q>", ":tabclose<Return>", opts)
+keymap("n", "<C-n>", ":tabnext<Return>", vim.tbl_extend("force", opts, { desc = "Next tab" }))
+keymap("n", "<C-p>", ":tabprevious<Return>", vim.tbl_extend("force", opts, { desc = "Previous tab" }))
+keymap("n", "<C-t>", ":tabnew<Return>", vim.tbl_extend("force", opts, { desc = "New tab" }))
+keymap("n", "<C-q>", ":tabclose<Return>", vim.tbl_extend("force", opts, { desc = "Close tab" }))
 
 -- neo tree
-keymap("n", "<C-b>", ":Neotree buffers<Return>", opts)
-keymap("n", "<C-e>", ":Neotree toggle<Return>", opts)
+keymap("n", "<C-b>", ":Neotree buffers<Return>", vim.tbl_extend("force", opts, { desc = "Open buffer sidebar" }))
+keymap("n", "<C-e>", ":Neotree toggle<Return>", vim.tbl_extend("force", opts, { desc = "Toggle file sidebar" }))
 
 -- fazzy finder
 local builtin = require("telescope.builtin")
-keymap("n", "<C-f>", builtin.git_files, {})
-keymap("n", "<C-g>", builtin.live_grep, {})
-keymap("n", "<leader>gs", builtin.git_status, {})
-keymap("n", "<leader>gl", builtin.git_commits, {})
+keymap("n", "<C-f>", builtin.git_files, { desc = "Find Git files" })
+keymap("n", "<C-g>", builtin.live_grep, { desc = "Live grep" })
+keymap("n", "<leader>gs", builtin.git_status, { desc = "Git status" })
+keymap("n", "<leader>gl", builtin.git_commits, { desc = "Git log" })
 
 -- vim keymaps
 -- nomal mode
-keymap("n", "<C-a>", "gg<S-v>G")
-keymap("n", "gh", "<C-w>h")
-keymap("n", "gj", "<C-w>j")
-keymap("n", "gk", "<C-w>k")
-keymap("n", "gl", "<C-w>l")
+keymap("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
+keymap("n", "gh", "<C-w>h", { desc = "Move to left window" })
+keymap("n", "gj", "<C-w>j", { desc = "Move to lower window" })
+keymap("n", "gk", "<C-w>k", { desc = "Move to upper window" })
+keymap("n", "gl", "<C-w>l", { desc = "Move to right window" })
 keymap("n", "x", '"_x', opts) -- delete without yank
 keymap("n", ";", ":", opts)
 

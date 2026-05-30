@@ -52,6 +52,16 @@ return require("packer").startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
+	-- completion
+	use({
+		"saghen/blink.cmp",
+		tag = "v1.10.2",
+		requires = { "rafamadriz/friendly-snippets" },
+	})
+
+	-- keymap hints
+	use("folke/which-key.nvim")
+
 	-- file tree
 	-- https://github.com/nvim-neo-tree/neo-tree.nvim
 	use({
@@ -364,6 +374,10 @@ return require("packer").startup(function(use)
 
 	-- git
 	use("tpope/vim-fugitive")
+	use({
+		"sindrets/diffview.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
 
 	-- https://github.com/numToStr/Comment.nvim
 	use({
