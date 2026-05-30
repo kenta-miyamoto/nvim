@@ -83,18 +83,11 @@ return require("packer").startup(function(use)
 			},
 		},
 		config = function()
-			-- If you want icons for diagnostic errors, you'll need to define them somewhere:
-			vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-			vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-			vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-			vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
-
 			require("neo-tree").setup({
 				close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 				popup_border_style = "rounded",
 				enable_git_status = true,
 				enable_diagnostics = true,
-				enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
 				open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
 				sort_case_insensitive = false, -- used when sorting files and directories in the tree
 				sort_function = nil, -- use a custom function for sorting files and directories in the tree
@@ -384,6 +377,8 @@ return require("packer").startup(function(use)
 
 	-- lsp
 	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
+	use("neovim/nvim-lspconfig")
 	use("mfussenegger/nvim-lint")
 	use("mhartington/formatter.nvim")
 
@@ -398,4 +393,3 @@ return require("packer").startup(function(use)
 		end,
 	})
 end)
-

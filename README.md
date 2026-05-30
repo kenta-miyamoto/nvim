@@ -1,7 +1,30 @@
 # nvim
 
-## enviroment
-- node versions : 18.12.1
+## Environment
+
+- Neovim: 0.11.0+
+- Node.js: required for JavaScript / TypeScript / Vue tooling
+- Go: required for Go LSP and formatting
+
+## Supported languages
+
+- Go
+- Vue.js
+- JavaScript
+- TypeScript
+- Markdown
+
+Go, JavaScript, TypeScript, and Vue use Neovim's built-in LSP client.
+
+Default LSP keymaps:
+
+- `gd`: go to definition
+- `gD`: go to declaration
+- `gr`: references
+- `gi`: implementation
+- `K`: hover
+- `<leader>rn`: rename
+- `<leader>ca`: code action
 
 ## Installation
 - [参考](https://namileriblog.com/mac/neovim/)
@@ -17,6 +40,12 @@
     ```bash
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    ```
+
+    Then install plugins:
+
+    ```vim
+    :PackerSync
     ```
 
 3. **Install im-select**
@@ -69,16 +98,42 @@
     brew install ripgrep
     ```
 
-5. **Install LSP**
+5. **Install tools with Mason**
 
-  ```commands
-  Mason
-  ```
+    Open Mason:
+
+    ```vim
+    :Mason
+    ```
+
+    Required tools:
+
+    - `gopls`
+    - `vtsls`
+    - `vue-language-server`
+    - `prettier`
+    - `biome`
+    - `vale`
+    - `golangci-lint`
+    - `golines`
+
+    `mason-lspconfig.nvim` installs the configured LSP servers automatically when possible.
+
+6. **Health check**
+
+    ```vim
+    :checkhealth
+    ```
+
+    If Treesitter reports query or parser errors, update parsers:
+
+    ```vim
+    :TSUpdate
+    ```
 
 
-6. **Setup pug highlight**
+7. **Setup pug highlight**
 
     ```
     set ft=pug
     ```
-

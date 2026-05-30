@@ -1,6 +1,8 @@
 require("options")
 require("plugins")
 require("keymaps")
+require("format")
+require("user_lint")
 
 -- https://github.com/nvim-lualine/lualine.nvim
 require("lualine").setup({
@@ -41,14 +43,23 @@ require("ibl").setup({
 
 require("nvim-treesitter.configs").setup({
 	auto_install = true,
+	ensure_installed = {
+		"go",
+		"javascript",
+		"typescript",
+		"tsx",
+		"vue",
+		"markdown",
+		"markdown_inline",
+	},
 	highlight = {
 		enable = true,
 	},
 })
-require("neo-tree").setup()
 
 -- im-select
 require("im_select").setup({
+	default_command = "im-select",
 	default_im_select = "com.apple.keylayout.ABC",
 })
 
@@ -91,9 +102,6 @@ require("gitsigns").setup({
 		row = 0,
 		col = 1,
 	},
-	yadm = {
-		enable = false,
-	},
 })
 
 require("telescope").setup({
@@ -120,53 +128,7 @@ require("telescope").setup({
 
 -- https://github.com/williamboman/mason.nvim
 require("mason").setup()
-
--- https://github.com/mhartington/formatter.nvim
-local util = require("formatter.util")
-
-require("formatter").setup({
-	logging = true,
-	log_level = vim.log.levels.WARN,
-	filetype = {
-		javascript = {
-			function()
-				return {
-					exe = "prettier",
-					args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--single-quote" },
-					stdin = true,
-				}
-			end,
-		},
-		json = { require("formatter.filetypes.json").jq },
-		ruby = { require("formatter.filetypes.ruby").rubocop },
-		lua = { require("formatter.filetypes.lua").stylua },
-		go = { require("formatter.filetypes.go").golines },
-    rust = { require("formatter.filetypes.rust").rustfmt },
-		sql = {
-			function()
-				return {
-					exe = "sql-formatter",
-					args = {},
-					stdin = true,
-				}
-			end,
-		},
-	},
-})
-
--- https://github.com/mfussenegger/nvim-lint
-require("lint").linters_by_ft = {
-	markdown = { "vale" },
-	javascript = { "biomejs" },
-	ruby = { "rubocop" },
-	go = { "golangcilint" }
-}
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	callback = function()
-		require("lint").try_lint()
-	end,
-})
+require("lsp")
 
 require("Comment").setup()
 vim.cmd([[colorscheme kanagawa-wave]])
