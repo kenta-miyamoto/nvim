@@ -12,6 +12,31 @@ Go、Vue.js、JavaScript、TypeScript、Markdownをよく使うためのNeovim�
 
 ## セットアップ
 
+基本的には以下だけでセットアップできます。
+
+```bash
+make setup
+```
+
+個別に実行したい場合:
+
+```bash
+make deps
+make packer
+make plugins
+make tools
+make treesitter
+make check
+```
+
+Mason toolのインストール待ち時間を増やしたい場合:
+
+```bash
+make tools MASON_INSTALL_WAIT=180
+```
+
+手動でセットアップする場合は以下を実行します。
+
 1. Neovimをインストールします。
 
     ```bash
@@ -69,6 +94,20 @@ Go、Vue.js、JavaScript、TypeScript、Markdownをよく使うためのNeovim�
     ```vim
     :TSUpdate
     ```
+
+## Makefile targets
+
+| Target | 内容 |
+| --- | --- |
+| `make setup` | 依存関係、Packer、plugin、Mason tool、Treesitter parserを入れて確認まで実行する |
+| `make deps` | Homebrewが使える場合にNeovim、ripgrep、im-selectを入れる |
+| `make packer` | Packerがなければインストールする |
+| `make plugins` | `:PackerSync` を実行する |
+| `make tools` | Masonで必要なLSP / formatter / linterを入れる |
+| `make treesitter` | Treesitter parserを更新する |
+| `make smoke` | Go / JavaScript / Markdownの簡易起動確認をする |
+| `make health` | `:checkhealth` を実行し、結果を `/tmp/nvim-health.txt` に出力する |
+| `make check` | `make smoke` と `make health` を実行する |
 
 ## 対応言語
 
