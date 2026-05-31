@@ -1,6 +1,16 @@
 require("options")
+-- Install + load all plugins via the built-in vim.pack (Neovim 0.12).
 require("plugins")
+
 require("keymaps")
+
+-- Completion is set up before LSP so its capabilities can be shared with servers.
+require("completion")
+
+-- https://github.com/mason-org/mason.nvim
+require("mason").setup()
+require("lsp")
+
 require("format")
 require("user_lint")
 
@@ -41,20 +51,34 @@ require("ibl").setup({
 	scope = { exclude = { language = { "" } } },
 })
 
-require("nvim-treesitter.configs").setup({
-	auto_install = true,
-	ensure_installed = {
+-- https://github.com/nvim-treesitter/nvim-treesitter (main branch: Neovim 0.11+ API)
+-- The rewrite removed `nvim-treesitter.configs` / `ensure_installed` / `highlight`.
+-- Parsers are installed via `install()` (a no-op if already present) and
+-- highlighting is started per buffer with `vim.treesitter.start()`.
+require("nvim-treesitter").install({
+	"go",
+	"javascript",
+	"typescript",
+	"tsx",
+	"vue",
+	"markdown",
+	"markdown_inline",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("user-treesitter", { clear = true }),
+	pattern = {
 		"go",
 		"javascript",
+		"javascriptreact",
 		"typescript",
-		"tsx",
+		"typescriptreact",
 		"vue",
 		"markdown",
-		"markdown_inline",
 	},
-	highlight = {
-		enable = true,
-	},
+	callback = function()
+		pcall(vim.treesitter.start)
+	end,
 })
 
 -- im-select
@@ -126,9 +150,8 @@ require("telescope").setup({
 	},
 })
 
--- https://github.com/williamboman/mason.nvim
-require("mason").setup()
-require("lsp")
+-- file tree (neo-tree + window-picker)
+require("filetree")
 
 require("Comment").setup()
 vim.cmd([[colorscheme kanagawa-wave]])
